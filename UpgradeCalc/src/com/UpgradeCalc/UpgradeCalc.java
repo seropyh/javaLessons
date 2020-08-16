@@ -38,8 +38,7 @@ public class UpgradeCalc {
 
 		System.out.println("Введите второе число:");
 		number2 = sc.nextDouble();
-		do
-		{
+		do {
 			if (action.equals("/") && number2 == 0) {
 				System.out.println("На ноль делить нельзя\nВведите второе число:");
 				number2 = sc.nextDouble();
@@ -66,7 +65,7 @@ public class UpgradeCalc {
 			result = number1 % number2;
 
 		} else if (action.equals("div")) {
-			result = (long)number1 / (long)number2;
+			result = (long) number1 / (long) number2;
 		}
 		System.out.println("Результат:");
 		System.out.println(result);
