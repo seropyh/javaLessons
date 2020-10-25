@@ -1,7 +1,15 @@
 package com.zoo.animal;
 
 public class Monkey extends Animal {
+	public Monkey(Integer age, String name, String color) {
+		this.age = age;
+		this.name = name;
+		this.color = color;
+	}
 
+	private Integer age;
+	private String name;
+	private String color;
 	public static void canJump() {
 		System.out.println("Обезьяна прыгает");
 	}

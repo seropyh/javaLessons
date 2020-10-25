@@ -69,7 +69,7 @@ public class Dog extends Animal implements say,canJump {
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
 	@Override

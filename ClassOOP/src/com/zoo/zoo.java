@@ -1,53 +1,51 @@
 package com.zoo;
 
+import com.exception.DuplicateAnimalException;
 import com.exception.NegativeValueException;
+import com.exception.VolierOverflowException;
 import com.zoo.animal.Animal;
 import com.zoo.animal.Cat;
 import com.zoo.animal.Dog;
+import com.zoo.animal.Duck;
+import com.zoo.animal.Eagle;
+import com.zoo.animal.Elephant;
+import com.zoo.animal.Monkey;
 
 public class zoo {
 
 	// private static final int CONSTANT = 1;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws VolierOverflowException, DuplicateAnimalException {
 
+		/* Добавляю собаку */
 		var dog = new Dog("Джон", 10, "Хаски", "Белая", true);
-		/*
-		 * dog.setName("Джон"); dog.setAge(10); dog.setBreed("Хаски");
-		 * dog.setColor("Белая"); dog.setTrained(true);
-		 */
-//		dog.name = "Мяу";
-		dog.say();
-		System.out.println(dog.getName());
-		// dog.setName("Джон");
-		System.out.println(dog.getName());
-		try {
-		/*	var z = 5 / 0;
-			Object r = null;
-			r.getClass();
-		*/
-			throw new NegativeValueException("Привет");
-			} 
-		catch (ArithmeticException ex) {
-			System.out.println(ex.getMessage());
-//			System.exit(0);
-		}
-		catch (NegativeValueException ex) {
-				System.out.println(ex.getMessage());
-//				System.exit(0);
-		}
-		catch (NullPointerException ex) {
-				System.out.println(ex.getMessage());
-		}
-		finally {
-			System.out.println ("finally");
-		}
-		/*
-		 * var cat = new Cat(); cat.setName("Ящик"); cat.setAge(3);
-		 * cat.setColor("black"); System.out.println(cat.getName());
-		 * System.out.println(cat.getAge()); System.out.println(cat.getColor());
-		 */
+		/* Добавляю утку */
+		var duck = new Duck(10, "Утка", "Белая");
+		/* Добавляю кошку */
+		var cat = new Cat(10, "Кошка", "Серая");
+		/* Добавляю кошку */
+		var eagle = new Eagle(10, "Белый", "Орел");
+		var elephant = new Elephant(10, "Слон", "Синий");
+		var monkey = new Monkey(10, "Горилла", "Черный"); // Раскомментируй для теста переполнения вольера
+		/* Определяем вольер */
+		var volier = new Volier();
+		/* Добавляем животных в вольер */
+		volier.addAnimal(dog);
+		volier.addAnimal(duck);
+		// volier.addAnimal(dog); // Раскомментируй для теста исключения дублей видов
+		// зверей
+		volier.addAnimal(cat);
+		volier.addAnimal(eagle);
+		volier.addAnimal(elephant);
+		// volier.addAnimal(monkey); // Раскомментируй для теста исключения переполнения вольера
 
-	}
+		
+
+		System.out.println(volier.getCount()); // Печатаем количество зверей в вольере
+		System.out.println(volier); // Печатаем содержимое вольера
+		volier.delAnimal(dog); // Забираем из вольера собаку
+		System.out.println(volier.getCount()); 
+		System.out.println(volier);
+	}	
 
 }
