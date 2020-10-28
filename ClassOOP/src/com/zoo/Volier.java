@@ -7,12 +7,12 @@ import com.exception.NegativeValueException;
 import com.exception.VolierOverflowException;
 import com.zoo.animal.Animal;
 
-public class Volier extends HashSet {
+public class Volier {
 
 	private HashSet<Animal> volier;
-	private static int maxCountAnimal = 5;
-	private static int count;
-
+	private  int maxCountAnimal = 5;
+	private  int count; 
+	
 	public Volier(HashSet volier) {
 		this.volier = volier;
 
@@ -23,8 +23,8 @@ public class Volier extends HashSet {
 	}
 
 	public void addAnimal(Animal animal) throws VolierOverflowException, DuplicateAnimalException {
-		count++;
-		if (this.getCount() > maxCountAnimal) {
+		this.count++;
+		if (this.count > maxCountAnimal) {
 			throw new VolierOverflowException("Ошибка! Вольер переполнен. Сначала удалите зверей из вольера");
 		} 
 		for (Animal i: volier) {
@@ -32,15 +32,13 @@ public class Volier extends HashSet {
 				throw new DuplicateAnimalException("Ошибка! Такое животное уже есть в вольере");
 			}
 		}
-			
-		
 		this.volier.add(animal);
 	}
 
 	public void delAnimal(Animal animal) {
 
 		this.volier.remove(animal);
-		setCount(getCount() - 1);
+		this.count--;;
 	}
 
 	@Override
@@ -53,12 +51,10 @@ public class Volier extends HashSet {
 
 	}
 
-	public static int getCount() {
+	public  int getCount() {
 		return count;
 	}
 
-	public static void setCount(int count) {
-		Volier.count = count;
-	}
+	
 
 }
