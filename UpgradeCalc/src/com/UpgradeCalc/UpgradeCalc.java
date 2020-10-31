@@ -1,26 +1,29 @@
-package com.UpgradeCalc;
+package com.upgradecalc;
 
 import java.util.Scanner;
 
 public class UpgradeCalc {
 
-	public static double myPow(double n1, long n2) {
-		double result = n1;
-		if (n2 == 0)
+	public static int myPow(int n1, int n2) {
+		int result = n1;
+		if (n2 == 0) {
 			return 1;
-		result = n1;
+		}
+
 		for (int i = 1; i < n2; i++) {
 			result = result * n1;
 		}
-		return result;
+		if (n2>=0) {
+			return result;	
+		}else {
+			return 1/result;
+		}
+		
+		
 	}
-
 	public static void main(String[] args) {
 		var sc = new Scanner(System.in);
 		var action = "";
-		var number1 = 0d;
-		var number2 = 0d;
-		var result = 0d;
 		var goodAction = true;
 		System.out.println("Введите действие(/,+,-,*,^(второе чило целое),mod,div):");
 		do {
@@ -34,17 +37,19 @@ public class UpgradeCalc {
 
 		} while (!goodAction);
 		System.out.println("Введите первое число:");
-		number1 = sc.nextDouble();
-
+		var number1 = 0;
+		number1 = sc.nextInt();
 		System.out.println("Введите второе число:");
-		number2 = sc.nextDouble();
+		var number2 = 0;
+		number2 = sc.nextInt();
 		do {
 			if (action.equals("/") && number2 == 0) {
 				System.out.println("На ноль делить нельзя\nВведите второе число:");
-				number2 = sc.nextDouble();
-			}
-		} while (number2 == 0.0);
+				number2 = sc.nextInt();
+		}
 
+		} while (number2 == 0.0);
+		var result = 0;
 		if (action.equals("/")) {
 			result = number1 / number2;
 
@@ -58,14 +63,14 @@ public class UpgradeCalc {
 			result = number1 * number2;
 
 		} else if (action.equals("^")) {
-			result = myPow(number1, (long) number2);
+			result = myPow(number1, number2);
 			System.out.println(result);
 
 		} else if (action.equals("mod")) {
 			result = number1 % number2;
 
 		} else if (action.equals("div")) {
-			result = (long) number1 / (long) number2;
+			result = number1 / number2;
 		}
 		System.out.println("Результат:");
 		System.out.println(result);
