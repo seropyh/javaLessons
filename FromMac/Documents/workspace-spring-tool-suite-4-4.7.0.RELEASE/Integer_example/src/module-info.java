@@ -1,0 +1,2 @@
+module Integer_example {
+}
