@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">ItNordic</a>
+    <a class="navbar-brand" href="#">TTT</a>
+</nav>
+
+<main role="main" class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td scope="row">Дата публикации</td>
+            <td scope="row">Новость</td>
+            <td scope="row">Источник</td>
+        </tr>
+        </thead>
+        <tbody th:each="n : ${Story}">
+        <tr>
+            <td th:text="${new java.util.Date(n.published * 1000)}" scope="col"></td>
+            <td th:text="${n.title}" scope="col"></td>
+            <td th:text="${n.shortURL}" scope="col"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
